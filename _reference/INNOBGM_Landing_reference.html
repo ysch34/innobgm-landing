@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>INNOBGM — 선거송 24시간 시안, 3일 납품</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root {
+  --bg: #0e0e10;
+  --bg-soft: #17171b;
+  --ink: #f5f3ee;
+  --muted: #a3a09a;
+  --hairline: rgba(255,255,255,0.10);
+  --coral: #ff5a3c;
+  --indigo: #4f46e5;
+  --mustard: #f5c542;
+  --sage: #a8d8c4;
+  --cream: #f5e9d4;
+  --display: 'Archivo Black', 'Pretendard', system-ui, sans-serif;
+  --text: 'Pretendard', 'Archivo', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; }
+.container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.h-display { font-family: var(--display); font-weight: 900; letter-spacing: -0.02em; line-height: 0.95; text-transform: uppercase; }
+
+/* NAV */
+nav.top { position: sticky; top: 0; z-index: 50; background: rgba(14,14,16,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
+nav.top .row { display: flex; align-items: center; height: 64px; gap: 32px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 18px; }
+.brand-dot { width: 10px; height: 10px; background: var(--coral); border-radius: 2px; }
+.menu { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+.menu a:hover { color: var(--ink); }
+.nav-cta { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: transform 120ms, background 120ms; }
+.btn-primary { background: var(--coral); color: #0e0e10; }
+.btn-primary:active { transform: translateY(1px); }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hairline); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 13px; }
+
+/* HERO */
+.hero { padding: 80px 0 48px; position: relative; overflow: hidden; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: rgba(255,90,60,0.12); color: var(--coral); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+.eyebrow .dot { width: 6px; height: 6px; background: var(--coral); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+.hero h1 { font-family: var(--display); font-size: clamp(48px, 7vw, 104px); line-height: 0.92; letter-spacing: -0.025em; margin: 24px 0 24px; text-transform: uppercase; }
+.hero h1 .accent-coral { color: var(--coral); }
+.hero h1 .accent-mustard { color: var(--mustard); }
+.hero h1 .underline { display: inline-block; position: relative; }
+.hero h1 .underline::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0.05em; height: 0.18em; background: var(--indigo); z-index: -1; }
+.hero p.lead { font-size: 18px; line-height: 1.55; color: var(--muted); max-width: 600px; margin: 0 0 32px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.hero-meta { margin-top: 28px; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; color: var(--muted); font-size: 13px; }
+.hero-meta strong { color: var(--ink); font-weight: 600; }
+
+/* HERO MARQUEE OF SAMPLE TILES */
+.tile-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 56px; }
+.tile { aspect-ratio: 1/1.15; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; cursor: pointer; transition: transform 200ms; }
+.tile:hover { transform: translateY(-4px); }
+.tile h3 { font-family: var(--display); font-size: 22px; line-height: 0.95; margin: 0; text-transform: uppercase; letter-spacing: -0.01em; }
+.tile .meta { font-size: 12px; opacity: 0.85; }
+.tile .play { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); color: #fff; align-self: flex-end; }
+.tile .play svg { margin-left: 2px; }
+.tile-1 { background: var(--coral); color: #1a0500; }
+.tile-1 .play { background: #1a0500; color: var(--coral); }
+.tile-2 { background: var(--indigo); color: #f5f3ee; }
+.tile-2 .play { background: #f5f3ee; color: var(--indigo); }
+.tile-3 { background: var(--cream); color: #1a0500; }
+.tile-3 .play { background: #1a0500; color: var(--cream); }
+.tile-4 { background: var(--mustard); color: #1a0500; }
+.tile-4 .play { background: #1a0500; color: var(--mustard); }
+.tile-5 { background: var(--sage); color: #0a2e0e; }
+.tile-5 .play { background: #0a2e0e; color: var(--sage); }
+.tile .num { position: absolute; top: 14px; right: 16px; font-family: var(--display); font-size: 14px; opacity: 0.6; }
+.wave { position: absolute; left: 16px; right: 16px; bottom: 70px; height: 28px; display: flex; align-items: end; gap: 2px; }
+.wave span { flex: 1; background: currentColor; opacity: 0.3; border-radius: 1px; }
+.tile.playing .wave span { animation: wv 0.9s ease-in-out infinite; }
+.tile.playing .play svg.play-icon { display: none; }
+.tile.playing .play svg.pause-icon { display: block !important; }
+@keyframes wv {
+  0%, 100% { height: 30%; }
+  50% { height: 100%; }
+}
+
+/* SECTION SCAFFOLD */
+section.band { padding: 96px 0; }
+.section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.section-eyebrow .pip { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+.section-title { font-family: var(--display); font-size: clamp(36px, 5vw, 64px); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; max-width: 880px; }
+
+/* WHY 4-GRID */
+.why-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.why-card { padding: 28px; border-radius: 22px; min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; }
+.why-1 { background: var(--coral); color: #1a0500; }
+.why-2 { background: var(--bg-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--hairline); }
+.why-3 { background: var(--mustard); color: #1a0500; }
+.why-4 { background: var(--indigo); color: var(--ink); }
+.why-card .num { font-family: var(--display); font-size: 14px; opacity: 0.7; }
+.why-card h3 { font-family: var(--display); font-size: 32px; line-height: 0.95; margin: 16px 0; text-transform: uppercase; letter-spacing: -0.01em; }
+.why-card p { font-size: 14px; line-height: 1.5; opacity: 0.85; margin: 0; }
+
+/* SAMPLES SECTION */
+.samples-list { margin-top: 56px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--hairline); }
+.sample-row { display: grid; grid-template-columns: 60px 1fr 220px 180px 60px; gap: 24px; align-items: center; padding: 24px 8px; border-bottom: 1px solid var(--hairline); cursor: pointer; transition: background 150ms; }
+.sample-row:hover { background: rgba(255,255,255,0.03); }
+.sample-row .idx { font-family: var(--display); font-size: 28px; color: var(--muted); }
+.sample-row .name { font-family: var(--display); font-size: 28px; line-height: 1; text-transform: uppercase; }
+.sample-row .name .sub { display: block; font-family: var(--text); font-size: 13px; font-weight: 400; color: var(--muted); margin-top: 8px; text-transform: none; letter-spacing: 0; }
+.sample-row .style { font-size: 13px; color: var(--muted); }
+.sample-row .style .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; margin-right: 6px; }
+.tag-coral { background: rgba(255,90,60,0.15); color: var(--coral); }
+.tag-indigo { background: rgba(79,70,229,0.18); color: #b3aef8; }
+.tag-mustard { background: rgba(245,197,66,0.15); color: var(--mustard); }
+.tag-sage { background: rgba(168,216,196,0.15); color: var(--sage); }
+.tag-cream { background: rgba(245,233,212,0.12); color: var(--cream); }
+.sample-row .duration { font-family: var(--display); font-size: 14px; color: var(--muted); text-align: right; }
+.sample-row .play-cell { display: flex; justify-content: flex-end; }
+.sample-row .play-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; transition: background 150ms; }
+.sample-row.playing .play-btn { background: var(--coral); color: #1a0500; }
+.sample-row.playing .name { color: var(--coral); }
+
+/* PRICING */
+.pricing-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tier { border-radius: 24px; padding: 36px 32px; display: flex; flex-direction: column; gap: 20px; min-height: 540px; }
+.tier-basic { background: var(--bg-soft); color: var(--ink); box-shadow: inset 0 0 0 1px var(--hairline); }
+.tier-standard { background: var(--cream); color: #1a0500; transform: translateY(-12px); }
+.tier-premium { background: var(--coral); color: #1a0500; }
+.tier .tier-name { font-family: var(--display); font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tier .tier-price { font-family: var(--display); font-size: 64px; line-height: 1; letter-spacing: -0.03em; }
+.tier .tier-price .currency { font-size: 24px; vertical-align: top; margin-right: 4px; opacity: 0.75; }
+.tier .tier-price .unit { font-family: var(--text); font-size: 16px; font-weight: 500; opacity: 0.65; margin-left: 6px; }
+.tier .tier-tag { font-size: 13px; opacity: 0.7; }
+.tier ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.tier li { display: flex; gap: 10px; font-size: 14px; line-height: 1.5; }
+.tier li .check { flex-shrink: 0; margin-top: 2px; }
+.tier .tier-cta { margin-top: auto; }
+.tier-standard .tier-cta { background: #1a0500; color: var(--cream); }
+.tier-premium .tier-cta { background: #1a0500; color: var(--coral); }
+.tier-basic .tier-cta { background: var(--ink); color: var(--bg); }
+.tier-flag { display: inline-block; padding: 4px 10px; background: rgba(0,0,0,0.85); color: var(--cream); border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; align-self: flex-start; }
+
+/* PROCESS */
+.process-rail { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.process-step { padding: 28px 20px 28px 0; border-top: 2px solid var(--hairline); position: relative; }
+.process-step .step-num { font-family: var(--display); font-size: 14px; color: var(--coral); margin-bottom: 16px; }
+.process-step h4 { font-family: var(--display); font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 10px; }
+.process-step p { font-size: 13px; line-height: 1.5; color: var(--muted); margin: 0; }
+.process-step .time { display: inline-block; margin-top: 12px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; background: rgba(255,90,60,0.12); color: var(--coral); }
+.process-step:nth-child(1) { border-top-color: var(--coral); }
+.process-step:nth-child(2) { border-top-color: var(--mustard); }
+.process-step:nth-child(2) .step-num { color: var(--mustard); }
+.process-step:nth-child(2) .time { background: rgba(245,197,66,0.12); color: var(--mustard); }
+.process-step:nth-child(3) { border-top-color: var(--sage); }
+.process-step:nth-child(3) .step-num { color: var(--sage); }
+.process-step:nth-child(3) .time { background: rgba(168,216,196,0.12); color: var(--sage); }
+.process-step:nth-child(4) { border-top-color: var(--indigo); }
+.process-step:nth-child(4) .step-num { color: #b3aef8; }
+.process-step:nth-child(4) .time { background: rgba(79,70,229,0.18); color: #b3aef8; }
+
+/* DELIVERABLES */
+.deliv-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.deliv-card { background: var(--bg-soft); border-radius: 22px; padding: 32px; box-shadow: inset 0 0 0 1px var(--hairline); }
+.deliv-card .icon-box { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.deliv-card.d1 .icon-box { background: var(--coral); color: #1a0500; }
+.deliv-card.d2 .icon-box { background: var(--mustard); color: #1a0500; }
+.deliv-card.d3 .icon-box { background: var(--indigo); color: #fff; }
+.deliv-card h4 { font-family: var(--display); font-size: 24px; text-transform: uppercase; margin: 0 0 8px; }
+.deliv-card .duration { font-family: var(--display); font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.deliv-card p { font-size: 14px; line-height: 1.55; color: var(--muted); margin: 0; }
+
+/* GUIDE BY ELECTION TYPE */
+.guide-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.guide-card { border-radius: 22px; padding: 32px; min-height: 320px; display: flex; flex-direction: column; gap: 16px; }
+.guide-1 { background: var(--indigo); color: #fff; }
+.guide-2 { background: var(--mustard); color: #1a0500; }
+.guide-3 { background: var(--sage); color: #0a2e0e; }
+.guide-card h4 { font-family: var(--display); font-size: 28px; text-transform: uppercase; line-height: 0.95; margin: 0; }
+.guide-card .level { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+.guide-card p { font-size: 14px; line-height: 1.5; margin: 0; opacity: 0.9; }
+.guide-card ul { list-style: none; padding: 0; margin-top: auto; display: flex; flex-direction: column; gap: 6px; font-size: 13px; opacity: 0.85; }
+.guide-card ul li::before { content: "→ "; opacity: 0.6; }
+
+/* FAQ */
+.faq-list { margin-top: 48px; max-width: 880px; }
+details { border-bottom: 1px solid var(--hairline); padding: 24px 0; }
+details summary { list-style: none; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; font-family: var(--display); font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em; }
+details summary::-webkit-details-marker { display: none; }
+details[open] summary { color: var(--coral); }
+details summary .plus { font-size: 28px; line-height: 0.8; transition: transform 200ms; }
+details[open] summary .plus { transform: rotate(45deg); }
+details .answer { margin-top: 16px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+/* CTA BAND */
+.cta-band { margin-top: 48px; background: var(--coral); color: #1a0500; border-radius: 28px; padding: 64px 48px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+.cta-band h2 { font-family: var(--display); font-size: clamp(32px, 4vw, 56px); line-height: 0.95; text-transform: uppercase; margin: 0; }
+.cta-band p { font-size: 16px; line-height: 1.5; margin: 16px 0 24px; opacity: 0.85; }
+.cta-band .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.cta-band .btn-primary { background: #1a0500; color: var(--coral); }
+.cta-band .btn-ghost { background: transparent; color: #1a0500; box-shadow: inset 0 0 0 1.5px rgba(26,5,0,0.4); }
+.cta-stats { display: grid; gap: 16px; }
+.cta-stat { padding: 24px; background: rgba(0,0,0,0.85); color: var(--coral); border-radius: 16px; }
+.cta-stat .v { font-family: var(--display); font-size: 40px; line-height: 1; }
+.cta-stat .l { font-size: 13px; margin-top: 4px; opacity: 0.75; }
+
+/* FOOTER */
+footer { padding: 64px 0 32px; border-top: 1px solid var(--hairline); margin-top: 96px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 48px; }
+.footer-brand .brand { font-size: 22px; }
+.footer-brand p { font-size: 14px; color: var(--muted); margin: 16px 0 0; max-width: 320px; line-height: 1.5; }
+.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.footer-col a { color: var(--ink); }
+.footer-col a:hover { color: var(--coral); }
+.footer-bottom { padding-top: 24px; border-top: 1px solid var(--hairline); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+
+/* FLOATING KAKAO CTA (mobile-friendly) */
+.float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 60; display: flex; gap: 8px; }
+.float-cta .btn { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .tile-strip { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .tier-standard { transform: none; }
+  .process-rail { grid-template-columns: 1fr 1fr; }
+  .deliv-grid, .guide-grid { grid-template-columns: 1fr; }
+  .cta-band { grid-template-columns: 1fr; padding: 40px 28px; }
+  .sample-row { grid-template-columns: 40px 1fr 60px; gap: 16px; }
+  .sample-row .style, .sample-row .duration { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .menu { display: none; }
+  .nav-cta .btn-ghost { display: none; }
+  section.band { padding: 64px 0; }
+  .hero h1 { font-size: 56px; }
+}
+@media (max-width: 560px) {
+  .tile-strip { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .float-cta { right: 12px; bottom: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="container row">
+    <a href="#" class="brand"><span class="brand-dot"></span>INNOBGM</a>
+    <div class="menu">
+      <a href="#samples">샘플</a>
+      <a href="#pricing">가격</a>
+      <a href="#process">제작 과정</a>
+      <a href="#guide">선거 유형별</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:01033351705" class="btn btn-ghost btn-sm">010-3335-1705</a>
+      <a href="#contact" class="btn btn-primary btn-sm">무료 상담</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span>6.3 지방선거 D-37 · 지금 의뢰 시 5월 둘째 주 납품</span>
+    <h1>
+      후보 이름,<br/>
+      <span class="underline">기억</span>되게.<br/>
+      <span class="accent-coral">선거송</span> <span class="accent-mustard">3일</span> 납품.
+    </h1>
+    <p class="lead">
+      AI 음악 제작 기반의 INNOBGM이 만드는 오리지널 선거송. 가사 확정 후 <strong style="color:var(--ink)">24시간 내 시안</strong>, 최종 <strong style="color:var(--ink)">3일 안에 납품</strong>합니다. 기존 업체 절반 가격, 저작권 분쟁 없는 100% 창작곡.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">카카오톡으로 상담 →</a>
+      <a href="#samples" class="btn btn-ghost">샘플 5종 들어보기</a>
+    </div>
+    <div class="hero-meta">
+      <span><strong>50만원</strong>부터 시작</span>
+      <span style="opacity: 0.4">·</span>
+      <span>유세차 루프 + SNS 숏폼 + 풀버전</span>
+      <span style="opacity: 0.4">·</span>
+      <span>저작권료 별도 청구 <strong>없음</strong></span>
+    </div>
+
+    <div class="tile-strip" id="hero-tiles">
+      <div class="tile tile-1" data-track="0">
+        <span class="num">01</span>
+        <h3>국민<br/>응원가</h3>
+        <div class="wave">
+          <span style="height:30%"></span><span style="height:60%"></span><span style="height:80%"></span><span style="height:50%"></span><span style="height:90%"></span><span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:85%"></span><span style="height:35%"></span><span style="height:65%"></span><span style="height:45%"></span>
+        </div>
+        <button class="play" aria-label="재생">
+          <svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg>
+          <svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>
+        </button>
+      </div>
+      <div class="tile tile-2" data-track="1">
+        <span class="num">02</span>
+        <h3>트렌디<br/>캠페인</h3>
+        <div class="wave">
+          <span style="height:50%"></span><span style="height:80%"></span><span style="height:35%"></span><span style="height:90%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:85%"></span><span style="height:40%"></span><span style="height:75%"></span><span style="height:50%"></span><span style="height:65%"></span>
+        </div>
+        <button class="play" aria-label="재생">
+          <svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg>
+          <svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>
+        </button>
+      </div>
+      <div class="tile tile-3" data-track="2">
+        <span class="num">03</span>
+        <h3>감성<br/>메시지</h3>
+        <div class="wave">
+          <span style="height:35%"></span><span style="height:50%"></span><span style="height:75%"></span><span style="height:40%"></span><span style="height:85%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:45%"></span><span style="height:60%"></span><span style="height:80%"></span><span style="height:50%"></span><span style="height:65%"></span>
+        </div>
+        <button class="play" aria-label="재생">
+          <svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg>
+          <svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>
+        </button>
+      </div>
+      <div class="tile tile-4" data-track="3">
+        <span class="num">04</span>
+        <h3>온 가족<br/>캠페인</h3>
+        <div class="wave">
+          <span style="height:40%"></span><span style="height:60%"></span><span style="height:50%"></span><span style="height:75%"></span><span style="height:55%"></span><span style="height:80%"></span><span style="height:45%"></span><span style="height:65%"></span><span style="height:35%"></span><span style="height:70%"></span><span style="height:50%"></span><span style="height:60%"></span>
+        </div>
+        <button class="play" aria-label="재생">
+          <svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg>
+          <svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>
+        </button>
+      </div>
+      <div class="tile tile-5" data-track="4">
+        <span class="num">05</span>
+        <h3>리메이크<br/>응원가</h3>
+        <div class="wave">
+          <span style="height:60%"></span><span style="height:40%"></span><span style="height:80%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:45%"></span><span style="height:85%"></span><span style="height:50%"></span><span style="height:65%"></span><span style="height:40%"></span><span style="height:75%"></span><span style="height:55%"></span>
+        </div>
+        <button class="play" aria-label="재생">
+          <svg class="play-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg>
+          <svg class="pause-icon" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style="display:none"><rect x="3" y="2" width="3" height="10"/><rect x="8" y="2" width="3" height="10"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHY 4 GRID -->
+<section class="band">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--coral)"></span>왜 INNOBGM인가</p>
+    <h2 class="section-title">기존 업체보다<br/>빠르고, 싸고, 안전합니다.</h2>
+    <div class="why-grid">
+      <div class="why-card why-1">
+        <span class="num">01 / 속도</span>
+        <h3>3일<br/>납품</h3>
+        <p>가사 확정 후 24시간 안에 시안, 최종 3일 안에 납품. 기존 업체는 1–2주.</p>
+      </div>
+      <div class="why-card why-2">
+        <span class="num">02 / 가격</span>
+        <h3>50만원<br/>부터</h3>
+        <p>전문 스튜디오 단가의 절반 이하. 기초의원·구의원 캠프도 부담 없이 가능.</p>
+      </div>
+      <div class="why-card why-3">
+        <span class="num">03 / 저작권</span>
+        <h3>분쟁<br/>제로</h3>
+        <p>오리지널 창작곡 제공으로 원곡 저작권료·인격권료가 별도로 청구되지 않음.</p>
+      </div>
+      <div class="why-card why-4">
+        <span class="num">04 / 다양성</span>
+        <h3>스타일<br/>5종</h3>
+        <p>트로트풍이 별로면 모던팝으로. 한 후보 캠프 안에서 다양한 변형 가능.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLES -->
+<section class="band" id="samples" style="background: var(--bg-soft); border-radius: 32px 32px 0 0;">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--mustard)"></span>샘플 5종</p>
+    <h2 class="section-title">스타일별로<br/>들어보세요.</h2>
+    <p style="color: var(--muted); margin-top: 16px; font-size: 16px; max-width: 600px;">행을 클릭하면 30초 미리듣기가 재생됩니다. 의뢰 시 후보 이름과 기호번호를 반영한 샘플을 24시간 안에 만들어 드립니다.</p>
+
+    <div class="samples-list" id="sample-list">
+      <div class="sample-row" data-track="0">
+        <span class="idx">01</span>
+        <div class="name">국민 응원가<span class="sub">트로트 기반 · 4060 유권자 · 후렴 반복형</span></div>
+        <div class="style"><span class="tag tag-coral">트로트</span><span class="tag tag-mustard">국민가요</span></div>
+        <div class="duration">3:12</div>
+        <div class="play-cell"><button class="play-btn" aria-label="재생"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="sample-row" data-track="1">
+        <span class="idx">02</span>
+        <div class="name">트렌디 캠페인<span class="sub">모던팝 · 2030 유권자 · SNS 숏폼 최적</span></div>
+        <div class="style"><span class="tag tag-indigo">모던팝</span><span class="tag tag-sage">신스</span></div>
+        <div class="duration">2:48</div>
+        <div class="play-cell"><button class="play-btn" aria-label="재생"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="sample-row" data-track="2">
+        <span class="idx">03</span>
+        <div class="name">감성 메시지<span class="sub">발라드 · 출정식 · 진정성 강조</span></div>
+        <div class="style"><span class="tag tag-cream">발라드</span><span class="tag tag-sage">서정</span></div>
+        <div class="duration">3:35</div>
+        <div class="play-cell"><button class="play-btn" aria-label="재생"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="sample-row" data-track="3">
+        <span class="idx">04</span>
+        <div class="name">온 가족 캠페인<span class="sub">동요풍 · 전 연령 · 따라부르기 쉬움</span></div>
+        <div class="style"><span class="tag tag-mustard">동요풍</span><span class="tag tag-coral">싱어롱</span></div>
+        <div class="duration">2:30</div>
+        <div class="play-cell"><button class="play-btn" aria-label="재생"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button></div>
+      </div>
+      <div class="sample-row" data-track="4">
+        <span class="idx">05</span>
+        <div class="name">리메이크 응원가<span class="sub">기존 응원가 스타일 · 별도 협의 · 저작권 검토 필수</span></div>
+        <div class="style"><span class="tag tag-coral">리메이크</span></div>
+        <div class="duration">별도 협의</div>
+        <div class="play-cell"><button class="play-btn" aria-label="재생"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="band" id="pricing">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--cream)"></span>패키지</p>
+    <h2 class="section-title">선거 규모에<br/>맞춰 고르세요.</h2>
+    <p style="color: var(--muted); margin-top: 16px; font-size: 16px; max-width: 600px;">모든 패키지는 가사 작성, 음원 생성, 유세차 루프 편집을 포함합니다. 광역단체장급에는 프리미엄을 권장합니다.</p>
+
+    <div class="pricing-grid">
+      <div class="tier tier-basic">
+        <div>
+          <div class="tier-name">베이직</div>
+          <div class="tier-tag" style="margin-top: 8px;">구의원 · 기초의원</div>
+        </div>
+        <div class="tier-price"><span class="currency">₩</span>50<span class="unit">만원</span></div>
+        <ul>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>음악 스타일 1종 선택</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>가사 작성 (이름·기호번호 각인형)</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>풀버전 1곡 (2분 30초~)</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>유세차 루프 60초 편집</li>
+          <li style="opacity:0.4">─ SNS 숏폼 미포함</li>
+        </ul>
+        <a href="#contact" class="btn tier-cta">베이직 문의하기 →</a>
+      </div>
+
+      <div class="tier tier-standard">
+        <span class="tier-flag">★ 가장 많이 선택</span>
+        <div>
+          <div class="tier-name">스탠다드</div>
+          <div class="tier-tag" style="margin-top: 8px;">시·군·구청장 · 기초단체장</div>
+        </div>
+        <div class="tier-price"><span class="currency">₩</span>80<span class="unit">만원</span></div>
+        <ul>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>음악 스타일 1종 선택</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>가사 작성 (지역 공약 반영)</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>풀버전 1곡</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>유세차 루프 60초</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>SNS 숏폼 30초 (릴스/숏츠)</li>
+        </ul>
+        <a href="#contact" class="btn tier-cta">스탠다드 문의하기 →</a>
+      </div>
+
+      <div class="tier tier-premium">
+        <div>
+          <div class="tier-name">프리미엄</div>
+          <div class="tier-tag" style="margin-top: 8px;">도지사 · 광역시장</div>
+        </div>
+        <div class="tier-price"><span class="currency">₩</span>130<span class="unit">만원</span></div>
+        <ul>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><strong>음악 스타일 2종</strong> 동시 제작</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>각 스타일별 가사 작성</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>풀버전 <strong>2곡</strong></li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>유세차 루프 2종 + SNS 숏폼 2종</li>
+          <li><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>출정식 풀버전 + 콜앤리스폰스</li>
+        </ul>
+        <a href="#contact" class="btn tier-cta">프리미엄 문의하기 →</a>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; color: var(--muted); font-size: 13px;">＊ 표시 가격은 부가세 별도. 리메이크 응원가(기존 곡 개사)는 저작권 검토 후 별도 견적입니다.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="band" id="process" style="background: var(--bg-soft);">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--indigo)"></span>제작 과정</p>
+    <h2 class="section-title">의뢰부터 납품까지<br/>최단 72시간.</h2>
+
+    <div class="process-rail">
+      <div class="process-step">
+        <div class="step-num">STEP 01</div>
+        <h4>의뢰<br/>접수</h4>
+        <p>카카오톡 또는 이메일로 후보 정보 (이름·기호번호·지역·핵심 공약·슬로건) 전달.</p>
+        <span class="time">당일</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">STEP 02</div>
+        <h4>가사<br/>확정</h4>
+        <p>스타일 선택 + 1차 가사 초안 송부. 의뢰인 확인·수정 후 최종 가사 확정.</p>
+        <span class="time">D+1일</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">STEP 03</div>
+        <h4>음원<br/>시안</h4>
+        <p>가사 확정 후 24시간 안에 1차 시안 음원 송부. 스타일 변경 1회 무상.</p>
+        <span class="time">D+2일</span>
+      </div>
+      <div class="process-step">
+        <div class="step-num">STEP 04</div>
+        <h4>편집<br/>납품</h4>
+        <p>유세차 루프, SNS 숏폼, 풀버전 모두 편집 완료 후 mp3·wav 동시 납품.</p>
+        <span class="time">D+3일</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="band">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--sage)"></span>납품물</p>
+    <h2 class="section-title">3가지 편집본을<br/>한 번에 받습니다.</h2>
+
+    <div class="deliv-grid">
+      <div class="deliv-card d1">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16V4l7 3-7 3"/><circle cx="8" cy="18" r="3"/><path d="M11 18V8"/></svg>
+        </div>
+        <h4>유세차 루프</h4>
+        <div class="duration">60초 · 무한 반복</div>
+        <p>유세차량 반복 재생용. 후보 이름·기호번호·슬로건이 약 10초마다 등장하도록 편집. 이음새 자연스럽게 페이드 처리.</p>
+      </div>
+      <div class="deliv-card d2">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M12 17h.01"/></svg>
+        </div>
+        <h4>SNS 숏폼</h4>
+        <div class="duration">30~45초 · 세로형</div>
+        <p>릴스·숏츠·틱톡 그대로 업로드. 인트로 없이 가장 임팩트 있는 후렴부터 시작. 자막 친화적 발음.</p>
+      </div>
+      <div class="deliv-card d3">
+        <div class="icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+        </div>
+        <h4>출정식 풀버전</h4>
+        <div class="duration">2:30~3:00 · 기승전결</div>
+        <p>출정식·결의대회용 완전한 곡. 감성 도입 → 후렴 폭발 → 브릿지 → 피날레. 한 곡으로 행사 분위기 완성.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDE BY ELECTION TYPE -->
+<section class="band" id="guide">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--mustard)"></span>선거 유형별</p>
+    <h2 class="section-title">출마 유형에 맞는<br/>가사 전략이 다릅니다.</h2>
+
+    <div class="guide-grid">
+      <div class="guide-card guide-1">
+        <span class="level">광역단체장</span>
+        <h4>비전<br/>중심</h4>
+        <p>도·광역시 단위 미래상을 그리는 방향. 경제·산업·인프라 같은 큰 그림 공약을 비전 키워드와 결합.</p>
+        <ul>
+          <li>1절: 지역 위상·가능성</li>
+          <li>후렴: 비전 + 이름 결합</li>
+          <li>브릿지: 시민 동행 메시지</li>
+        </ul>
+      </div>
+      <div class="guide-card guide-2">
+        <span class="level">기초단체장</span>
+        <h4>지역<br/>밀착</h4>
+        <p>특정 지역명·랜드마크·생활 공약을 가사에 자연스럽게 녹임. 유세차량 반복 재생을 전제로 후렴 강조.</p>
+        <ul>
+          <li>1절: 지역 문제 공감</li>
+          <li>후렴: 이름·번호·슬로건</li>
+          <li>2절: 구체 공약 2~3개</li>
+        </ul>
+      </div>
+      <div class="guide-card guide-3">
+        <span class="level">지방의원</span>
+        <h4>이름<br/>각인</h4>
+        <p>곡 자체를 짧게 (1분 30초 이내). 후보 이름·기호번호 노출 빈도를 최대화. 공약은 핵심 1~2개만.</p>
+        <ul>
+          <li>인트로: 이름 + 번호</li>
+          <li>후렴: 이름 집중 반복</li>
+          <li>아웃트로: 짧고 강하게</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band" id="faq" style="background: var(--bg-soft);">
+  <div class="container">
+    <p class="section-eyebrow"><span class="pip" style="background:var(--coral)"></span>자주 묻는 질문</p>
+    <h2 class="section-title">미리 확인하세요.</h2>
+
+    <div class="faq-list">
+      <details open>
+        <summary>저작권은 누구한테 있나요?<span class="plus">+</span></summary>
+        <div class="answer">납품과 동시에 의뢰인(캠프)에게 사용권이 전면 양도됩니다. 오리지널 창작곡이라 원곡 저작권자에게 별도로 인격권료·저작권료가 청구되지 않습니다. 단, 가사 내용에 대한 법적 책임(허위 사실, 비방 등)은 의뢰인에게 있습니다.</div>
+      </details>
+      <details>
+        <summary>「공직선거법」 문제는 없나요?<span class="plus">+</span></summary>
+        <div class="answer">선거송 자체는 합법입니다. 다만 선거운동 기간 외 사용, 허위 사실 포함, 비방 내용은 「공직선거법」 위반 소지가 있습니다. INNOBGM은 음원 제작만 담당하며, 사용 시점·내용은 의뢰인 책임입니다. 가사 검토 시 기본적인 표현 자문은 무상 제공합니다.</div>
+      </details>
+      <details>
+        <summary>리메이크(기존 곡 개사)도 되나요?<span class="plus">+</span></summary>
+        <div class="answer">가능하지만 별도 협의 사항입니다. 한국음악저작권협회(KOMCA)를 통해 원저작자 동의·저작권료 정산이 선행되어야 하며, 이 과정 비용은 별도입니다. 시간이 촉박한 경우 오리지널 창작 5종 스타일을 권장드립니다.</div>
+      </details>
+      <details>
+        <summary>수정 요청은 몇 번까지 되나요?<span class="plus">+</span></summary>
+        <div class="answer">가사는 2회, 음원 시안은 스타일 변경 1회 + 부분 수정 2회까지 무상입니다. 그 이상은 건당 추가 비용이 발생합니다. 의뢰 단계에서 정보를 충분히 주실수록 수정이 줄어듭니다.</div>
+      </details>
+      <details>
+        <summary>세금계산서 발행 가능한가요?<span class="plus">+</span></summary>
+        <div class="answer">네, 이노사운드디자인 사업자명으로 정식 세금계산서 발행 가능합니다. 선거비용 보전 신청 시 필요한 영수증·계약서도 함께 제공해 드립니다.</div>
+      </details>
+      <details>
+        <summary>음악 스타일이 마음에 안 들면요?<span class="plus">+</span></summary>
+        <div class="answer">시안 송부 후 24시간 안에 다른 스타일로 변경해 드립니다. AI 기반이라 트로트 → 모던팝 변경도 추가 1일이면 가능합니다. 단 새 가사 작성이 필요한 경우 일정이 +1일 늘어납니다.</div>
+      </details>
+      <details>
+        <summary>지금 의뢰하면 언제 받을 수 있나요?<span class="plus">+</span></summary>
+        <div class="answer">오늘 카톡 의뢰 시 → 내일 가사 확정 → 모레 시안 → D+3일에 최종 납품. 6.3 지방선거까지 약 37일이 남았으므로 5월 첫째 주까지 의뢰 시 충분히 여유 있게 사용하실 수 있습니다.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="padding: 0 0 96px;">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h2>지금 카톡 보내면<br/>3일 뒤 유세차에서<br/>당신 이름이 흐릅니다.</h2>
+        <p>견적 상담 무료. 24시간 안에 답변 드립니다. 후보 이름·기호번호·지역만 알려주세요.</p>
+        <div class="actions">
+          <a href="https://pf.kakao.com/_innobgm" class="btn btn-primary">카카오톡 채널 →</a>
+          <a href="tel:01033351705" class="btn btn-ghost">010-3335-1705</a>
+        </div>
+      </div>
+      <div class="cta-stats">
+        <div class="cta-stat">
+          <div class="v">24h</div>
+          <div class="l">시안 송부 시간</div>
+        </div>
+        <div class="cta-stat">
+          <div class="v">3일</div>
+          <div class="l">최종 납품 기한</div>
+        </div>
+        <div class="cta-stat">
+          <div class="v">50%</div>
+          <div class="l">기존 단가 대비 절감</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-dot"></span>INNOBGM</div>
+        <p>이노사운드디자인 / INNO SOUND DESIGN. 6.3 지방선거 후보 캠프를 위한 AI 기반 선거송 제작 서비스.</p>
+      </div>
+      <div class="footer-col">
+        <h5>서비스</h5>
+        <ul>
+          <li><a href="#samples">샘플 5종</a></li>
+          <li><a href="#pricing">패키지 가격</a></li>
+          <li><a href="#process">제작 과정</a></li>
+          <li><a href="#guide">선거 유형별</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>문의</h5>
+        <ul>
+          <li><a href="tel:01033351705">010-3335-1705</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#b9c0cadad18a8df9d7d8cfdccb97dad6d4"><span class="__cf_email__" data-cfemail="c2bbb1a1aaf1f682aca3b4a7b0eca1adaf">[email&#160;protected]</span></a></li>
+          <li><a href="https://pf.kakao.com/_innobgm">카카오톡 채널</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>회사</h5>
+        <ul>
+          <li>이노사운드디자인</li>
+          <li>innobgm.com</li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 이노사운드디자인 (INNO SOUND DESIGN). All rights reserved.</span>
+      <span>본 서비스는 「공직선거법」을 준수하며, 가사 내용에 대한 법적 책임은 의뢰인에게 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="float-cta">
+  <a href="https://pf.kakao.com/_innobgm" class="btn btn-primary">💬 카카오톡 상담</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Sample player simulation — toggle "playing" state on tiles + sample rows
+(function() {
+  let currentTrack = null;
+  function setPlaying(idx) {
+    document.querySelectorAll('.tile.playing, .sample-row.playing').forEach(el => el.classList.remove('playing'));
+    if (idx === null) return;
+    document.querySelectorAll('[data-track="' + idx + '"]').forEach(el => el.classList.add('playing'));
+  }
+  function handleClick(e) {
+    const el = e.currentTarget;
+    const idx = el.getAttribute('data-track');
+    if (currentTrack === idx) {
+      currentTrack = null;
+      setPlaying(null);
+    } else {
+      currentTrack = idx;
+      setPlaying(idx);
+    }
+  }
+  document.querySelectorAll('[data-track]').forEach(el => el.addEventListener('click', handleClick));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length <= 1) return;
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
