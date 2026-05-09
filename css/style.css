@@ -380,6 +380,53 @@ nav.top .row {
   font-size: 13px;
 }
 
+/* ============== HERO CHECK GRID (신규) ============== */
+.hero-checks {
+  margin: 4px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+  border: 1px solid var(--hairline);
+}
+.hero-check-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  align-items: center;
+}
+.hero-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.hero-check strong {
+  color: var(--ink);
+  font-weight: 800;
+}
+.hero-check-icon {
+  flex-shrink: 0;
+  color: var(--purple);
+  background: var(--purple-soft);
+  border-radius: 50%;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 720px) {
+  .hero-checks { padding: 14px 16px; }
+  .hero-check { font-size: 13px; }
+  .hero-check-row { gap: 8px 16px; }
+}
+
 /* HERO 일러스트 (유세차) - 좌측 카피 뒤로 살짝 겹치며 확대 */
 .hero-illust {
   position: relative;
@@ -461,13 +508,13 @@ nav.top .row {
 }
 .tile .tile-sub {
   font-family: var(--text);
-  font-size: 11.5px;
-  line-height: 1.45;
-  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0 0;
   color: var(--ink);
-  opacity: 0.62;
-  font-weight: 500;
-  letter-spacing: 0;
+  opacity: 0.72;
+  font-weight: 600;
+  letter-spacing: -0.005em;
 }
 .tile .play {
   width: 40px;
@@ -1101,6 +1148,97 @@ section.band { padding: 96px 0; }
   color: #fff;
 }
 .tier-premium .tier-cta:hover { background: var(--purple-deep); }
+
+/* ============== TIER INSIGHT (BASIC 서브카드) ============== */
+.tier-insight {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  margin: 4px 0 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tier-insight-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tier-insight-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+.tier-insight-title {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-transform: none;
+}
+.tier-insight-lead {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+}
+.tier-insight-lead strong {
+  color: #fff;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.tier-insight-list {
+  list-style: none;
+  padding: 0;
+  margin: 2px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tier-insight-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.88);
+}
+.ti-target {
+  flex: 1;
+  font-weight: 500;
+}
+.ti-arrow {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ti-style {
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 2px 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  letter-spacing: -0.005em;
+}
+.tier-insight-claim {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #fff;
+  margin: 4px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.25);
+  text-align: center;
+}
+.tier-insight-claim strong {
+  font-weight: 800;
+  letter-spacing: -0.005em;
+}
 
 .tier-flag {
   display: inline-block;
