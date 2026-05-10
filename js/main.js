@@ -20,6 +20,8 @@
     m2: 'audio/music/sample-3-emotional.mp3',    // 감성 메시지
     m3: 'audio/music/sample-4-family.m4a',       // 온 가족 캠페인
     m4: 'audio/music/sample-5-remake.m4a',       // 리메이크 응원가
+    // WHY 04 토탈 카드 — 유세차버전 데모
+    't-truck': 'audio/music/gukmin-cheer-truck.m4a',
     // 보이스 6종 (카드 배치 순)
     v0: 'audio/voice/voice-energy-female.m4a',   // 에너지 · 여성
     v1: 'audio/voice/voice-energy-male.m4a',     // 에너지 · 남성
@@ -76,7 +78,7 @@
 
   function setPlayingUI(trackId) {
     // 모든 재생 상태 초기화
-    document.querySelectorAll('.tile.playing, .sample-row.playing, .voice-card.playing')
+    document.querySelectorAll('.tile.playing, .sample-row.playing, .voice-card.playing, .why-cta.playing')
       .forEach(el => el.classList.remove('playing'));
 
     if (trackId === null) return;
@@ -190,5 +192,42 @@
   // 6) 페이지 이탈 시 재생 중인 음원 정지 (메모리 정리)
   // -----------------------------------------------------
   window.addEventListener('pagehide', stopAllAudio);
+
+  // -----------------------------------------------------
+  // 7) 샘플 리스트 곡 길이 자동 표시 (실제 음원 메타데이터)
+  //    - .sample-row 만 대상 (히어로 타일·보이스 카드 제외)
+  //    - preload="metadata"로 헤더만 가볍게 로드 (수십 KB)
+  //    - 실패 시 기존 텍스트 유지 (안전 fallback)
+  // -----------------------------------------------------
+  function formatDuration(sec) {
+    if (!isFinite(sec) || sec <= 0) return null;
+    const total = Math.round(sec);
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    return m + ':' + (s < 10 ? '0' + s : s);
+  }
+
+  document.querySelectorAll('.sample-row[data-track]').forEach(row => {
+    const trackId = row.getAttribute('data-track');
+    const src = TRACK_SRC[trackId];
+    if (!src) return; // 음원 미등록 행은 기존 표시 유지
+
+    const cell = row.querySelector('.duration');
+    if (!cell) return;
+
+    const probe = new Audio();
+    probe.preload = 'metadata';
+    probe.src = src;
+
+    probe.addEventListener('loadedmetadata', () => {
+      const formatted = formatDuration(probe.duration);
+      if (formatted) cell.textContent = formatted;
+    }, { once: true });
+
+    probe.addEventListener('error', () => {
+      // 실패: 하드코딩된 기존 텍스트 유지
+      console.warn('[INNOBGM] 메타데이터 로드 실패:', src);
+    }, { once: true });
+  });
 
 })();
